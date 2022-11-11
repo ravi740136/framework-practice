@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="multibrowser suite" verbose="0">
+  <listeners>
+    <listener class-name="org.raqa.seleniumtestngtest.listeners.CustomListener"/>
+  </listeners>
+  <test thread-count="5" name="chrome_test" verbose="0">
+    <parameter name="browser" value="chrome"/>
+    <classes>
+      <class name="org.raqa.seleniumtestngtest.TestClass"/>
+    </classes>
+  </test> <!-- chrome_test -->
+ 
+</suite> <!-- multibrowser suite -->
