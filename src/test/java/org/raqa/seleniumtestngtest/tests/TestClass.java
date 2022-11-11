@@ -1,4 +1,4 @@
-package org.raqa.seleniumtestngtest;
+package org.raqa.seleniumtestngtest.tests;
 
 import java.io.IOException;
 

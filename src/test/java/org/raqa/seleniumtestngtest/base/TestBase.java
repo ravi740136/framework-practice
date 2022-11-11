@@ -59,9 +59,13 @@ public class TestBase {
 	public void initDriver(@Optional String browser) throws URISyntaxException {
 		// String browser = config.getProperty("browser");
 		System.out.println("browser is " + browser);
-		if (browser.contentEquals("chrome") || browser.contentEquals("ie") || browser.contentEquals("firefox")) {
+		switch(browser) {
+		//if (browser.contentEquals("chrome") || browser.contentEquals("ie") || browser.contentEquals("firefox")) {
 			// System.setProperty("webdriver.chrome.driver",
 			// System.getProperty("user.dir") + "/src/test/resources/drivers/chromedriver");
+			case "chrome":
+			case "firefox":
+			case "ie":
 			File f = new File(getClass().getClassLoader().getResource("drivers/chromedriver").getFile());
 			if (!f.canExecute()) {
 				f.setExecutable(true);
@@ -69,8 +73,9 @@ public class TestBase {
 			System.setProperty("webdriver.chrome.driver", f.getAbsolutePath());
 			driver = new ChromeDriver();
 			setDriver(driver);
-		} else {
-
+			break;
+		default:
+			throw new IllegalStateException("unsupported browser " + browser);
 		}
 		getDriver().get(config.getProperty("siteurl"));
 		prepareBrowser();
@@ -92,7 +97,7 @@ public class TestBase {
 		System.out.println("cleanup");
 		if (getDriver() != null) {
 			getDriver().quit();
-			driverpool.set(null);
+			driverpool.remove();
 		}
 
 	}

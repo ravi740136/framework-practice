@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import org.raqa.seleniumtestngtest.TestClass;
+import org.raqa.seleniumtestngtest.tests.TestClass;
 import org.testng.IAlterSuiteListener;
 import org.testng.annotations.Listeners;
 import org.testng.collections.Maps;
